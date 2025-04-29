@@ -12,10 +12,10 @@ router.route('/')
         res.render('contact');
     })
     .post((req, res) => {
-        const { name, email, message } = req.body;
+        const { firstName, lastName, email } = req.body;
         // Here you would typically handle the form submission, e.g., save to a database or send an email
-        console.log(`Name: ${name}, Email: ${email}, Message: ${message}`);
-        res.redirect('/contact/thank-you'); // Redirect to the contact page after submission
+        console.log(`Name: ${firstName} ${lastName}, Email: ${email}`);
+        res.render('thanks', {firstName, lastName, email}); // Redirect to the contact page after submission
     });
 
 router.get('/thank-you', (req, res) => {
